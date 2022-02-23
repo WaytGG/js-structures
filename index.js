@@ -1,3 +1,48 @@
+class Stack {
+  constructor() {
+    this.container = {};
+    this.end = 0;
+    this.start = 0;
+  }
+
+  get size() {
+    return this.end;
+  }
+
+  push(value) {
+    this.end++;
+    this.container[this.end] = value;
+
+    if (this.end > 0) {
+      this.start = 1;
+    }
+
+    return this.end;
+  }
+
+  pop() {
+    if (this.end === 0) {
+      return undefined;
+    }
+    const elem = this.container[this.end];
+    delete this.container[this.end];
+    this.end--;
+    return elem;
+  }
+}
+
+const stack = new Stack();
+
+// stack.push(1)
+// stack.push(2)
+// stack.push(3)
+
+// console.log(stack.size);
+
+
+
+
+
 class Queue {
   constructor() {
     this.container = {};
@@ -16,15 +61,15 @@ class Queue {
   push(value) {
     this.end++;
     this.container[this.end] = value;
-    
-    if(this.start === 0) {
+
+    if (this.start === 0) {
       this.start = 1;
     }
 
     return this.end;
   }
 
-  shift() {
+  pop() {
     if (this.start === this.end && !(this.start in this.container)) {
       return undefined;
     }
@@ -40,10 +85,8 @@ class Queue {
 
 const queue = new Queue();
 
-queue.push(1);
-queue.push(2);
-queue.push(3);
-
-// queue.shift();
+queue.push(1)
+queue.push(2)
+queue.push(3)
 
 console.log(queue.size);
